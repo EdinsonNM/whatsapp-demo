@@ -1,6 +1,7 @@
 const initialState = {
   progress: false,
-  data: []
+  data: [],
+  page: 0
 };
 
 export default function UserReducer(state = initialState, action) {
@@ -8,12 +9,13 @@ export default function UserReducer(state = initialState, action) {
     case "USERS_LOAD":
       return {
         ...state,
+        page: state.page + 1,
         progress: true
       };
     case "USERS_LOAD_OK":
       return {
         ...state,
-        data: action.payload,
+        data: [...state.data, ...action.payload],
         progress: false
       };
     case "USERS_LOAD_ERROR":

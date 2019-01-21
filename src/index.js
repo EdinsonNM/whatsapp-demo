@@ -3,13 +3,11 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-import Login from "./Login";
-import AppTabs from "./AppTabs";
-import AppBar from "./AppBar";
-import ChatButton from "./ChatButton";
-import "./styles.css";
+import "./styles/styles.css";
 import { Provider } from "react-redux";
 import store from './redux/store';
+import Home from './containers/home/Home';
+import Login from './containers/login/Login';
 
 const theme = createMuiTheme({
   palette: {
@@ -39,15 +37,6 @@ function App() {
   );
 }
 
-function Home() {
-  return (
-    <div className="App">
-      <AppBar />
-      <AppTabs />
-      <ChatButton />
-    </div>
-  );
-}
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

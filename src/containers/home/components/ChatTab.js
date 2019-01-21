@@ -7,8 +7,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import UserChat from "./UserChat";
-import { getUsers } from "./utils";
-import { loadUsers } from "./redux/actions/users";
+import { loadUsers } from "../../../redux/actions/users";
 import {connect} from 'react-redux';
 const styles = theme => ({
   root: {

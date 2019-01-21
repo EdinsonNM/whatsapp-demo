@@ -11,7 +11,7 @@ import SwipeableViews from "react-swipeable-views";
 import ChatTab from "./ChatTab";
 import TabContainer from "./TabContainer";
 import {connect} from 'react-redux';
-import { loadUsers } from './redux/actions/users';
+import { loadUsers } from '../../../redux/actions/users';
 
 const styles = theme => ({
   root: {
@@ -80,6 +80,7 @@ class AppTabs extends React.Component {
         >
           <TabContainer dir={theme.direction}>
             <ChatTab/>
+            <button onClick={this.props.loadUsers}>LOAD USERS</button>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <ChatTab />
@@ -87,6 +88,7 @@ class AppTabs extends React.Component {
           <TabContainer dir={theme.direction}>
             <ChatTab />
           </TabContainer>
+          
         </SwipeableViews>
       </div>
     );

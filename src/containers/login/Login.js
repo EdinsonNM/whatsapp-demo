@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
-import LoginBar from "./LoginBar";
-import LoginContainer from "./LoginContainer";
 import { connect } from "react-redux";
-import { loginAction } from "./redux/actions/auth";
+import { loginAction } from "../../redux/actions/auth";
 import { Redirect } from "react-router-dom";
+import LoginBar from './components/LoginBar';
+import LoginContainer from './components/LoginContainer';
 const styles = theme => ({
   root: {
     flexGrow: 1,

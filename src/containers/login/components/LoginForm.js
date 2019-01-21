@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { withStyles } from "@material-ui/core/styles";
-import { getCountriesCode } from "./utils";
+import { getCountriesCode } from "../../../api/user";
 
 const styles = theme => ({
   root: {
