@@ -12,6 +12,7 @@ import ChatTab from "./ChatTab";
 import TabContainer from "./TabContainer";
 import {connect} from 'react-redux';
 import { loadUsers } from '../../../redux/actions/users';
+import ChatApp from '../../chat/chat';
 
 const styles = theme => ({
   root: {
@@ -86,7 +87,7 @@ class AppTabs extends React.Component {
             <ChatTab />
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <ChatTab />
+            <ChatApp />
           </TabContainer>
           
         </SwipeableViews>

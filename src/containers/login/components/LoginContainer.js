@@ -36,20 +36,9 @@ const LoginContainer = props => {
       >
         <Grid item xs={12} sm={8} md={6}>
           <Typography component="div">
-            Whatsapp will send an SMS message (carrier changes may apply) to
-            verify your phone number. &nbsp;Enter your country code and phone
-            number:
+            Ingresa tu correo y contraseña
           </Typography>
-          <LoginForm />
-          <Typography component="div" className={classes.linkContainer}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => login("user", "123")}
-            >
-              Next
-            </Button>
-          </Typography>
+          <LoginForm login={login}/>
         </Grid>
       </Grid>
     </div>

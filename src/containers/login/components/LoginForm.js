@@ -8,6 +8,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { withStyles } from "@material-ui/core/styles";
 import { getCountriesCode } from "../../../api/user";
+import { Button } from '@material-ui/core';
+import { Typography } from "@material-ui/core";
 
 const styles = theme => ({
   root: {
@@ -72,20 +74,19 @@ const CountrySelectOption = withStyles(styleCountrySelect)(props => {
 
 class LoginForm extends React.Component {
   state = {
-    countryCode: "",
-    countriesCode: []
+    email: "",
+    password: ''
   };
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-  componentWillMount() {
-    getCountriesCode().then(response => {
-      this.setState({ countriesCode: response });
-    });
+  handleLogin = () => {
+    const {email, password} = this.state;
+    this.props.login(email, password);
   }
   render() {
-    const { classes } = this.props;
-    const { countriesCode } = this.state;
+    const { classes, login } = this.props;
+    const { email, password } = this.state;
     return (
       <div className={classes.root}>
         <form className={classes.form} autoComplete="off">
@@ -98,63 +99,36 @@ class LoginForm extends React.Component {
               spacing={24}
             >
               <Grid item xs={12}>
-                <Select
-                  className={classes.select}
-                  value={this.state.countryCode}
-                  onChange={this.handleChange}
-                  displayEmpty
-                  fullWidth
-                  inputProps={{
-                    name: "countryCode",
-                    id: "country-code",
-                    classes: {
-                      root: classes.input
-                    }
-                  }}
-                >
-                  <MenuItem value="" disabled>
-                    Country Code
-                  </MenuItem>
-                  {countriesCode.map(item => (
-                    <MenuItem
-                      key={item.callingCode}
-                      component="div"
-                      value={item.callingCode}
-                    >
-                      {item.name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </Grid>
-              <Grid item xs={2}>
                 <TextField
-                  placeholder=""
+                  onChange={this.handleChange}
+                  name="email"
+                  placeholder="Email"
                   margin="normal"
-                  value={this.state.countryCode}
-                  InputProps={{
-                    readOnly: true,
-                    classes: {
-                      root: classes.input
-                    },
-                    startAdornment: (
-                      <InputAdornment position="start">+</InputAdornment>
-                    )
-                  }}
+                  value={email}
+                  fullWidth
                 />
               </Grid>
-              <Grid item xs={10}>
+              <Grid item xs={12}>
                 <TextField
-                  placeholder="Phone number"
+                  onChange={this.handleChange}
+                  name="password"
+                  type="password"
+                  placeholder="Contraseña"
                   fullWidth
                   margin="normal"
-                  InputProps={{
-                    classes: {
-                      root: classes.input
-                    }
-                  }}
+                  value={password}
                 />
               </Grid>
             </Grid>
+            <Typography component="div" className={classes.linkContainer}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.handleLogin}
+            >
+              Login
+            </Button>
+          </Typography>
           </FormControl>
         </form>
       </div>

@@ -24,7 +24,7 @@ const LoginBar = props => {
     <AppBar className={classes.bar} position="relative" color="inherit">
       <Toolbar className={classes.toolbar} color="inherit">
         <Typography className={classes.header} variant="h6" color="inherit">
-          Verify your phone number
+          Iniciar sesión
         </Typography>
       </Toolbar>
     </AppBar>
