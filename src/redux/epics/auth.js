@@ -1,9 +1,9 @@
-import { empty, observable, merge, forkJoin, fromEventPattern, concat } from "rxjs";
+import { empty, observable, merge, forkJoin, fromEventPattern, concat, of } from "rxjs";
 import { AUTH_LOGIN } from '../../constants/actions';
 import { Observable, from } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import {loadUsersOk} from '../actions/users';
-import { switchMap, catchError, map, debounceTime, filter } from 'rxjs/operators';
+import { loadUsersOk, registerUserLoginAction } from '../actions/users';
+import { switchMap, catchError, map, debounceTime, filter, mergeMap } from 'rxjs/operators';
 import {ofType} from 'redux-observable'
 import UserApi from '../../api/userApi';
 import { loginActionOk, loginActionError, userMeAction } from '../actions/auth';
@@ -17,7 +17,12 @@ const loginEpic = action$ => action$.pipe(
                 .then(handler)
         )
         .pipe(
-            map(data => loginActionOk(data.user)),
+            mergeMap(data => {
+                return concat(
+                    of(loginActionOk(data.user)),
+                    of(registerUserLoginAction(data.user.uid))
+                );
+            }),
             catchError(error => loginActionError(error))
         );
     })

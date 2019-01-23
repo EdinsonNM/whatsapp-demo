@@ -7,6 +7,7 @@ class Firebase {
     constructor(){
         this._app = app;
         this._firebase = firebase;
+        this._db = app.database();
     }
 }
 export default Firebase;

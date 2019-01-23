@@ -8,7 +8,6 @@ export default function ChatContent({messages = []}) {
                 {messages.map((message, index) =>
                     <ChatItem key={`message-${index}`} message={message}/>
                 )}
-               
             </div>
         </div>
     )

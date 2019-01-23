@@ -9,6 +9,9 @@ class UserApi extends Firebase{
     login({email,password}){
         return this._firebase.auth().signInWithEmailAndPassword(email, password);
     }
+    registerActiveUser(userId){
+        return this._db.ref('activeusers/' + userId).set(true);
+    }
 
 }
 export default UserApi;
